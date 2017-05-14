@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>mousewheel</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<style>
+    * { margin:0; padding:0; }//reset css
+    .box { width:100%; height:1500px; background:gray; } 
+    .two { width:100%; height:500px; background:orange; }
+    .one { width:100%; height:500px; background:pink; position:relative; }
+    .one h2 { width:100%; }
+    .one h2 img{ width:200px; height:200px; border-radius:50%;margin:0 0 0 -100px;left:50%; top:100px; display:block; position:absolute;}
+    .animated { animation-duration:3s;-webkit-animation-duration:3s; -webkit-animation-fill-mode: both;animation-fill-mode: both; }
+    .xuanzhuan { animation-name:xuanzhuan; -webkit-animation-name:xuanzhuan;}
+    @keyframes xuanzhuan { 
+        0% { opacity:0; transform:rotate(120deg);-webkit-transform:rotate(120deg);}
+        50% { opacity:0.5; transform:scale(1.5,1.5);-webkit-transform:scale(1.5,1.5);}
+        100% { opacity:1; transform: scale(1,1);-webkit-transform:scale(1,1);}
+    }
+    @-webkit-keyframes xuanzhuan { 
+        0% { opacity:0; transform:rotate(120deg);-webkit-transform:rotate(120deg);}
+        50% { opacity:0.5; transform:scale(1.5,1.5);-webkit-transform:scale(1.5,1.5);}
+        100% { opacity:1; transform:scale(1,1);-webkit-transform:scale(1,1);}
+    }
+
+</style>
+<body>
+<div class="box">
+    <div class="two"></div>
+    <div class="one">
+        <h2><img class="img01" src="img/1.jpg" /></h2>
+    </div>
+</div>
+<script>
+        function getTop(clsName){ 
+            var obj = document.getElementsByClassName(clsName)[0];
+            return obj.getBoundingClientRect().top;
+        }
+
+        function getDom(clsName){
+            var obj=document.getElementsByClassName(clsName)[0];
+            return obj;
+        }
+
+
+
+        window.addEventListener('scroll',function(){
+            var scrollT=document.documentElement.scrollTop||document.body.scrollTop;
+
+            /*第二页动画的触发*/
+            if(getTop('one')<300){
+                getDom('img01').classList.add('animated');
+                getDom('img01').classList.add('xuanzhuan');
+
+            }
+        })
+</script>
+<!-- <script>
+    $(function(){ 
+        function myFn(){
+            sT = $(window).scrollTop();
+            if(sT >= $('.jump').eq(4).offset().top-1000){
+                $('.si-left01').animate({'right':'0px'},500).addClass('opc1');
+                $('.si-left02 ').animate({'left':'0px'},600).addClass('opc1');
+                $('.si-left03 ').animate({'left':'85px'},700).addClass('opc1');
+                $('.act').animate({'marginLeft':'-10px'}).addClass('opc1');
+                $('.act').animate({'marginRight':'-10px'});
+            }else if(sT >= $('.jump').eq(3).offset().top-1000){
+                $('.fi-left01').animate({'left':'0px'},500).addClass('opc1');
+                $('.fi-left02 ').animate({'right':'625px'},600).addClass('opc1');
+                $('.fi-left03 ').animate({'right':'0px','top':'137px'},700).addClass('opc1');
+                $('.fi-left04').animate({'right':'280px'},1000).addClass('opc1');
+                $('.fi-left05').animate({'right':'175px'},1000).addClass('opc1');
+                $('.cloud04').animate({'left':'0px'}).addClass('opc1');
+            }else if(sT >= $('.jump').eq(2).offset().top-1000){
+                $('.fo-left01').animate({'left':'0px',},500).addClass('opc1');
+                $('.fo-left02 ').animate({'left':'100px','top':'73px'},600).addClass('opc1');
+                $('.fo-left03 ').animate({'right':'350px','top':'137px'},700).addClass('opc1');
+                $('.fo-left04').animate({'right':'0px'},1000).addClass('opc1');
+                $('.cloud03').animate({'right':'0px'}).addClass('opc1');
+            }else if(sT >= $('.jump').eq(0).offset().top-1000){
+                $('.th-left01').animate({'left':'0px'},500).addClass('opc1');
+                $('.th-left02 ').animate({'left':'0px'},600).addClass('opc1');
+                $('.th-left03 ').animate({'right':'350px'},700).addClass('opc1');
+                $('.th-left04').animate({'right':'0px'},1000).addClass('opc1');
+                $('.cloud02').animate({'left':'0px'}).addClass('opc1');
+                $('.two-left .left01').animate({'left':'0px'},500).addClass('opc1');
+                $('.two-left .left02 ').animate({'left':'154px'},600).addClass('opc1');
+                $('.two-left .left03').animate({'left':'280px'},700).addClass('opc1');
+                $('.two-left .left04').animate({'left':'600px'},1000).addClass('opc1');
+                $('.step1').animate({'right':'0px'}).addClass('opc1');
+                $('.cloud01').animate({'right':'0px'}).addClass('opc1');
+            }
+        }
+        $(function(){ 
+            var sT;
+            $(window).scroll(function(e) {
+                myFn();       
+            });
+        })
+    })
+</script> -->
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
